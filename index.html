@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Valentine Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #ffe6f0;
+      overflow: hidden;
+    }
+
+    .container {
+      margin-top: 100px;
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 5px;
+    }
+
+    .heart {
+      position: absolute;
+      color: red;
+      font-size: 24px;
+      animation: fall 4s linear infinite;
+    }
+
+    @keyframes fall {
+      from {
+        transform: translateY(-10vh);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container" id="main">
+  <h1>Enter your name:</h1>
+  <input type="text" id="nameInput" placeholder="Your name">
+  <br>
+  <button onclick="checkName()">Submit</button>
+</div>
+
+<script>
+function checkName() {
+  const name = document.getElementById("nameInput").value.trim();
+
+  if (name === "Ra Bhand") {
+    document.getElementById("main").innerHTML = `
+      <h1>Will you be my Valentine? 💖</h1>
+      <button onclick="showHearts()">Yes</button>
+      <button onclick="alert('Maybe next time!')">No</button>
+    `;
+  } else {
+    alert("This question isn't for you 🙂");
+  }
+}
+
+function showHearts() {
+  document.body.innerHTML = "<h1>Yay!!! ❤️</h1>";
+
+  // Create lots of hearts
+  for (let i = 0; i < 100; i++) {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(heart);
+  }
+}
+</script>
+
+</body>
+</html>
