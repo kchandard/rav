@@ -41,15 +41,6 @@
 </head>
 <body>
 
-<audio id="bgMusic">
-  <source src="careless_whisper.mp3" type="audio/mpeg">
-</audio>
-
-
-<audio id="yaySound" preload="auto">
-  <source src="yay.mp3" type="audio/mpeg">
-</audio>
-
 
 <div class="container" id="main">
   <h1>Enter your name:</h1>
@@ -79,11 +70,6 @@ function checkName() {
 }
 
 function showHearts() {
-
-  const yay = document.getElementById("yaySound");
-  yay.pause();          // reset if already playing
-  yay.currentTime = 0;  // start from beginning
-  yay.play().catch(err => console.log(err));
 
 
   document.body.innerHTML = `
