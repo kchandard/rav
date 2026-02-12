@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Valentine Website</title>
+  <title>For the acoustic girl</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -52,22 +52,37 @@
 function checkName() {
   const name = document.getElementById("nameInput").value.trim();
 
-  if (name === "Ra Bhand") {
+  if (name === "Ravneet") {
     document.getElementById("main").innerHTML = `
-      <h1>Will you be my Valentine? 💖</h1>
+      <h1>Will you be my Valentine :3 ? </h1>
       <button onclick="showHearts()">Yes</button>
-      <button onclick="alert('Maybe next time!')">No</button>
+      <button onclick="alert('Wrong answer.')">No</button>
     `;
   } else {
-    alert("This question isn't for you 🙂");
+    alert("Don't be dumb");
   }
 }
 
 function showHearts() {
-  document.body.innerHTML = "<h1>Yay!!! ❤️</h1>";
 
-  // Create lots of hearts
-  for (let i = 0; i < 100; i++) {
+  document.body.innerHTML = `
+    <h1 style="margin-top:100px;">YAY! ❤️</h1>
+    <button id="nextBtn"
+      style="
+        display:none;
+        padding:15px 25px;
+        font-size:18px;
+        border:none;
+        border-radius:10px;
+        background-color:#ff4d88;
+        color:white;
+        cursor:pointer;">
+      Click me ❤️
+    </button>
+  `;
+
+  // hearts
+  for (let i = 0; i < 120; i++) {
     const heart = document.createElement("div");
     heart.classList.add("heart");
     heart.innerHTML = "❤️";
@@ -76,6 +91,17 @@ function showHearts() {
     heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
     document.body.appendChild(heart);
   }
+
+  // show button after 3 seconds
+  setTimeout(() => {
+    const btn = document.getElementById("nextBtn");
+    btn.style.display = "inline-block";
+
+    btn.onclick = () => {
+      window.location.href = "message.html";
+    };
+
+  }, 3000);
 }
 </script>
 
