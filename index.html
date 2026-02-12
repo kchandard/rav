@@ -41,7 +41,6 @@
 </head>
 <body>
 
-
 <div class="container" id="main">
   <h1>Enter your name:</h1>
   <input type="text" id="nameInput" placeholder="Your name">
@@ -51,11 +50,6 @@
 
 <script>
 function checkName() {
-  const music = document.getElementById("bgMusic");
-  music.currentTime = 0; // forces it to start from the beginning
-  music.volume = 0.3;   // optional but recommended
-  music.play();
-
   const name = document.getElementById("nameInput").value.trim();
 
   if (name === "Ravneet") {
@@ -70,7 +64,6 @@ function checkName() {
 }
 
 function showHearts() {
-
 
   document.body.innerHTML = `
     <h1 style="margin-top:100px;">YAY! ❤️</h1>
