@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Secret Message</title>
+  <style>
+    body{
+      font-family: Arial;
+      text-align:center;
+      background:#ffe6f0;
+      margin-top:100px;
+    }
+
+    input, button{
+      padding:10px;
+      font-size:16px;
+      margin:5px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Secret message</h1>
+
+<p id="encrypted"></p>
+
+<input type="password" id="password" placeholder="Enter password (hint: my password)">
+<br>
+<button onclick="decryptMessage()">Decrypt</button>
+
+<p id="result" style="font-size:20px; font-weight:bold;"></p>
+
+<script>
+
+// Change this shift number if you want
+const shift = 3;
+
+// YOUR SECRET MESSAGE:
+const originalMessage = "HEYYYYY! Happy Valentines day! I hope this nerdy message works for you. I just wanted a unique way to tell you how much I really love you. I want you to know that no matter what, my love for you only grows, every single day. It's not a joke when I say you're the prettiest person ever. To me you truly are. I hope you know that. I pray you never stop being the shining positive ball of joy you are. You beam so bright you automatically make me happy with your welcoming radiance. Not only that but you're soooo beautiful. You may not believe it but really, you have such ravishing beauty that I can never seem to get out of my gaze and my mind (I love it). Your smile, your eyes, your hair, your lips, your skin, your nose, your neck, your chest, your neck, your eyebrows, your legs. E v e r y t h i n g. You make my life so much better just from being your gorgeous self. We have had almost 2 years now of talking and never once have you failed to make me smile. On your lows and highs, you try your best and I love that about you. I want to make your life easier and I do all that I do because of what you do for me. If there's anything ever you want from me, it's my mission to repay you for being the best girlfriend a man could ever ask for. Thank you rav. Happy Valentines :)  ";
+
+
+// Caesar encrypt function
+function caesarEncrypt(text, shift){
+  return text.split("").map(char => {
+    if(char.match(/[a-z]/i)){
+      const code = char.charCodeAt(0);
+      const base = code >= 65 && code <= 90 ? 65 : 97;
+      return String.fromCharCode((code - base + shift) % 26 + base);
+    }
+    return char;
+  }).join("");
+}
+
+// Caesar decrypt
+function caesarDecrypt(text, shift){
+  return caesarEncrypt(text, 26 - shift);
+}
+
+// Show encrypted text on load
+const encryptedText = caesarEncrypt(originalMessage, shift);
+document.getElementById("encrypted").innerText = encryptedText;
+
+
+// Password check
+function decryptMessage(){
+  const pass = document.getElementById("password").value;
+
+  if(pass === "201024"){
+    document.getElementById("result").innerText =
+      caesarDecrypt(encryptedText, shift);
+  }else{
+    alert("really..");
+  }
+}
+
+</script>
+
+</body>
+</html>
