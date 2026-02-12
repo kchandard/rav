@@ -83,7 +83,7 @@ function showHearts() {
   const yay = document.getElementById("yaySound");
   yay.pause();          // reset if already playing
   yay.currentTime = 0;  // start from beginning
-yay.play().catch(err => console.log(err));
+  yay.play().catch(err => console.log(err));
 
 
   document.body.innerHTML = `
